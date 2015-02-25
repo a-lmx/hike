@@ -20,5 +20,44 @@
   <%= @user.email %>
 </p>
 
+<h1>Trips</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Trip</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trips.where(user_id: @user.id).each do |trip| %>
+      <tr>
+        <td><%= trip.name %></td>
+        <% if trip.days.present? %>
+        <td><%= trip.days.order(:date).first.date %></td>
+        <% else %>
+        <td>---</td>
+        <% end %>
+        <% if trip.complete? %>
+        <td><%= trip.days.order(:date).last.date %></td>
+        <% else %>
+        <td>---</td>
+        <% end %>
+        <td><%= link_to 'Show', trip %></td>
+        <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
+        <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Trip', new_trip_path %><br><br>
+
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'All users', users_path %>

@@ -66,5 +66,6 @@
   <%= @trip.days.average(:distance) %>
 </p>
 
+<%= link_to 'New Day', new_day_path %><br><br>
 <%= link_to 'Edit', edit_trip_path(@trip) %> |
-<%= link_to 'Back', trips_path %>
+<%= link_to 'All trips', trips_path %>

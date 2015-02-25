@@ -2,7 +2,7 @@
 
 <p>
   <strong>Trip:</strong>
-  <%= @day.trip.name %>
+  <%= link_to @day.trip.name, trip_path(@day.trip) %>
 </p>
 
 <p>
@@ -16,4 +16,4 @@
 </p>
 
 <%= link_to 'Edit', edit_day_path(@day) %> |
-<%= link_to 'Back', days_path %>
+<%= link_to 'All days', days_path %>
