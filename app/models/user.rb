@@ -3,4 +3,7 @@ class User < ActiveRecord::Base
     c.validates_length_of_password_field_options = {minimum: 5}
   	c.login_field = :email
   end
+
+  has_many :trips
+  has_many :days, :through => :trips
 end
