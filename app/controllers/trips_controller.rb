@@ -10,8 +10,6 @@ class TripsController < ApplicationController
   # GET /trips/1
   # GET /trips/1.json
   def show
-  # be able to list days belonging to that trip, in order by date
-  #  @days = Trip.days
   end
 
   # GET /trips/new
@@ -71,6 +69,6 @@ class TripsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
-      params.require(:trip).permit(:user_id, :name, :start_date, :end_date)
+      params.require(:trip).permit(:user_id, :name, :complete)
     end
 end

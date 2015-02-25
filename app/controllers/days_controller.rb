@@ -16,6 +16,7 @@ class DaysController < ApplicationController
   def new
     @day = Day.new
     @trips = Trip.all.order(:name)
+
   end
 
   # GET /days/1/edit

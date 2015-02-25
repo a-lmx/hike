@@ -12,14 +12,28 @@
 
 <p>
   <strong>Start date:</strong>
+  <% if @trip.days.present? %>
   <%= @trip.days.order(:date).first.date %>
+  <% else %>
+  No days.
+  <% end %>
 </p>
 
 <p>
   <strong>End date:</strong>
+  <% if @trip.days.present? %>
   <%= @trip.days.order(:date).last.date %>
+  <% else %>
+  No days.
+  <% end %>
 </p>
 
+<p>
+  <strong>Complete?</strong>
+  <%= @trip.complete? %>
+</p>
+
+<% if @trip.days.present? %>
 <table>
   <thead>
     <tr>
@@ -41,6 +55,16 @@
     <% end %>
   </tbody>
 </table>
+<% else %>
+<p>
+	No days for this trip yet.
+</p>
+<% end %>
+
+<p>
+  <strong>Daily average:</strong>
+  <%= @trip.days.average(:distance) %>
+</p>
 
 <%= link_to 'Edit', edit_trip_path(@trip) %> |
 <%= link_to 'Back', trips_path %>
